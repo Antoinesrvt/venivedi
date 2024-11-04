@@ -1,6 +1,6 @@
+import { ProfileScreen } from '@my/app/features/profile/screen'
 import { Stack } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { ProfileScreen } from '@my/app/features/profile/screen'
 
 export default function Screen() {
   return (
@@ -8,7 +8,7 @@ export default function Screen() {
       <Stack.Screen
         options={{
           title: 'Profile',
-          headerShown: false,
+          headerShown: true,
         }}
       />
       <SafeAreaView style={{ flex: 1 }} edges={['left', 'right']}>

@@ -17,7 +17,7 @@ LogBox.ignoreLogs([
   'Require cycle',
 ])
 
-export default function HomeLayout() {
+export default function RootLayout() {
   const [fontLoaded] = useFonts({
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
@@ -60,14 +60,15 @@ export default function HomeLayout() {
       <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
         <Provider initialSession={initialSession}>
           <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="create" options={{ headerShown: true, headerBackTitle: 'Back' }} />
             <Stack.Screen
-              name="(tabs)"
+              name="settings/index"
               options={{
-                headerShown: false,
+                headerShown: true,
+                headerBackTitle: 'Back',
               }}
             />
-            <Stack.Screen name="create" />
-            <Stack.Screen name="settings/index" />
           </Stack>
         </Provider>
       </View>
