@@ -72,7 +72,7 @@ module.exports = () => {
           hostname: 'localhost',
         },
         {
-          hostname: '192.168.0.23',
+          hostname: '192.168.1.13',
         },
       ],
     },
@@ -118,6 +118,20 @@ module.exports = () => {
         permanent: false,
       },
     ],
+
+    async headers() {
+      return [
+        {
+          source: '/api/:path*',
+          headers: [
+            { key: 'Access-Control-Allow-Credentials', value: 'true' },
+            { key: 'Access-Control-Allow-Origin', value: '*' },
+            { key: 'Access-Control-Allow-Methods', value: 'GET,POST,OPTIONS' },
+            { key: 'Access-Control-Allow-Headers', value: '*' },
+          ],
+        },
+      ]
+    },
   }
 
   for (const plugin of plugins) {

@@ -17,9 +17,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/your-project-id"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "dev.tamagui.takeoutdemo",
@@ -32,9 +30,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "dev.tamagui.takeoutdemo",
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ],
+      "permissions": ["android.permission.RECORD_AUDIO"],
       "versionCode": 3
     },
     "web": {
@@ -66,11 +62,14 @@
       },
       "eas": {
         "projectId": "b5f02af2-6475-4d9e-81b3-664f89564580"
+      },
+      "cli": {
+        "port": 3000
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "owner": "tamagui-team"
+    "owner": "antoineservant"
   }
 }
