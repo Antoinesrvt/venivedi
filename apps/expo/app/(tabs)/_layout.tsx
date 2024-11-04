@@ -10,6 +10,8 @@ import {
   Search,
   Home,
   User,
+  Map,
+  Compass,
 } from '@tamagui/lucide-icons'
 import { Tabs } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -104,23 +106,48 @@ export default function TabsLayout() {
             height: 60 + insets.bottom,
             paddingBottom: insets.bottom,
           },
-          tabBarActiveTintColor: theme.blue10.get(),
-          tabBarInactiveTintColor: theme.gray10.get(),
+          tabBarActiveTintColor: '$blue10',
+          tabBarInactiveTintColor: '$gray10',
         }}
       >
         <Tabs.Screen
           name="index"
-          key="index"
           options={{
-            title: 'Home',
+            title: 'Map',
             tabBarIcon: ({ focused, size }) => (
-              <Home size={size} color={focused ? '$blue10' : '$gray10'} strokeWidth={2} />
+              <Map size={size} color={focused ? '$blue10' : '$gray10'} strokeWidth={2} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="friends"
+          options={{
+            title: 'Friends',
+            tabBarIcon: ({ focused, size }) => (
+              <Users size={size} color={focused ? '$blue10' : '$gray10'} strokeWidth={2} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="memories"
+          options={{
+            title: 'Memories',
+            tabBarIcon: ({ focused, size }) => (
+              <ImageIcon size={size} color={focused ? '$blue10' : '$gray10'} strokeWidth={2} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="discover"
+          options={{
+            title: 'Discover',
+            tabBarIcon: ({ focused, size }) => (
+              <Compass size={size} color={focused ? '$blue10' : '$gray10'} strokeWidth={2} />
             ),
           }}
         />
         <Tabs.Screen
           name="profile"
-          key="profile"
           options={{
             title: 'Profile',
             tabBarIcon: ({ focused, size }) => (

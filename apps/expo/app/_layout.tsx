@@ -66,19 +66,8 @@ export default function HomeLayout() {
                 headerShown: false,
               }}
             />
-            <Stack.Screen
-              name="create"
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="settings/index"
-              options={{
-                headerShown: true,
-                headerBackTitle: 'Back',
-              }}
-            />
+            <Stack.Screen name="create" />
+            <Stack.Screen name="settings/index" />
           </Stack>
         </Provider>
       </View>

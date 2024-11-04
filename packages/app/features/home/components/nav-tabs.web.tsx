@@ -8,7 +8,9 @@ import {
   Tabs,
   TabsProps,
   TabsTabProps,
+  XStack,
 } from '@my/ui'
+import { Map, Users, Image as ImageIcon, Compass, User } from '@tamagui/lucide-icons'
 import { useRouter as useNextRouter } from 'next/router'
 import { useState } from 'react'
 import { useRouter } from 'solito/router'
@@ -40,63 +42,47 @@ export const NavTabs = (props: TabsProps) => {
 
   return (
     <Tabs
-      $gtSm={{ mb: '$-0.75' }} // for the active TabsRovingIndicator to look good
       value={currentTab}
       onValueChange={setCurrentTab}
-      activationMode="manual"
+      orientation={props.orientation}
+      size={props.size}
       {...props}
     >
-      <AnimatePresence>
-        {intentAt && (
-          <TabsRovingIndicator
-            key="intent-indicator"
-            br="$4"
-            w={intentAt.width}
-            h={intentAt.height - 8}
-            x={intentAt.x}
-            y={intentAt.y + 4}
-            $sm={{ dsp: 'none' }}
-          />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {activeAt && (
-          <TabsRovingIndicator
-            zi={1}
-            key="active-indicator"
-            theme="active"
-            active
-            {...(props.orientation === 'vertical'
-              ? {
-                  y: activeAt.y,
-                  right: '$-1',
-                  height: activeAt.height,
-                  width: 3,
-                }
-              : {
-                  x: activeAt.x,
-                  bottom: '$-1',
-                  height: 3,
-
-                  width: activeAt.width,
-                })}
-          />
-        )}
-      </AnimatePresence>
       <Tabs.List
-        unstyled
-        aria-label="Navigate through the pages"
-        disablePassBorderRadius
         loop={false}
         w="100%"
         f={1}
-        flexDirection={props.orientation === 'horizontal' ? 'row' : 'column'} // temp fix: would be fixed after https://github.com/tamagui/tamagui/pull/1313
+        flexDirection={props.orientation === 'horizontal' ? 'row' : 'column'}
       >
         <Tab value="/" onInteraction={handleOnInteraction}>
-          Home
+          <XStack gap="$2" ai="center">
+            <Map size={16} />
+            <SizableText size={props.size as FontSizeTokens}>Map</SizableText>
+          </XStack>
         </Tab>
-        <Tab value="/settings" onInteraction={handleOnInteraction}>
-          Settings
+        <Tab value="/friends" onInteraction={handleOnInteraction}>
+          <XStack gap="$2" ai="center">
+            <Users size={16} />
+            <SizableText size={props.size as FontSizeTokens}>Friends</SizableText>
+          </XStack>
+        </Tab>
+        <Tab value="/memories" onInteraction={handleOnInteraction}>
+          <XStack gap="$2" ai="center">
+            <ImageIcon size={16} />
+            <SizableText size={props.size as FontSizeTokens}>Memories</SizableText>
+          </XStack>
+        </Tab>
+        <Tab value="/discover" onInteraction={handleOnInteraction}>
+          <XStack gap="$2" ai="center">
+            <Compass size={16} />
+            <SizableText size={props.size as FontSizeTokens}>Discover</SizableText>
+          </XStack>
+        </Tab>
+        <Tab value="/profile" onInteraction={handleOnInteraction}>
+          <XStack gap="$2" ai="center">
+            <User size={16} />
+            <SizableText size={props.size as FontSizeTokens}>Profile</SizableText>
+          </XStack>
         </Tab>
       </Tabs.List>
     </Tabs>
@@ -105,7 +91,7 @@ export const NavTabs = (props: TabsProps) => {
 
 const Tab = (props: TabsTabProps) => (
   <Tabs.Tab unstyled jc="flex-end" py="$3" px="$3" m="$1.5" {...props}>
-    <SizableText size={props.size as FontSizeTokens}>{props.children}</SizableText>
+    {props.children}
   </Tabs.Tab>
 )
 
